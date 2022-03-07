@@ -1,0 +1,16 @@
+name = "w"
+type = "javascript"
+zone_id = ""
+account_id = ""
+route = ""
+workers_dev = true
+compatibility_date = "2022-03-05"
+
+kv_namespaces = [
+	{ binding = "storage", id = "dc63071e609747e6b9ad86969bb76ed3", preview_id = "dc63071e609747e6b9ad86969bb76ed3" }
+]
+
+[build]
+command = "pnpm install && pnpm build"
+[build.upload]
+format = "service-worker"
