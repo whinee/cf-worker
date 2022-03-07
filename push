@@ -51,8 +51,11 @@ def cmd(v: str, g: bool=False, p: bool=False):
         else:
             cvp = getattr(cvp, f"bump_{tl[v]}")()
 
-        pj["version"] = str(cvp)
+        version = str(cvp)
+        pj["version"] = version
 
+        with open("version", "w") as f:
+            f.write(version)
         with open("package.json", "w") as f:
             f.write(json.dumps(pj, indent=4))
         
@@ -63,7 +66,7 @@ def cmd(v: str, g: bool=False, p: bool=False):
         run(f"git commit -am {cm}")
         run("git push")
         
-    if g:
+    if p:
         run("wrangler publish")
 
 for i in vls:
